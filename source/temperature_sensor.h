@@ -40,42 +40,42 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 #define FUSES_HOT_ADC_VAL_ADDR      (NVMCTRL_TEMP_LOG + 4)
 #define FUSES_HOT_ADC_VAL_Pos       20           /**< \brief (NVMCTRL_TEMP_LOG) 12-bit ADC conversion at hot temperature */
-#define FUSES_HOT_ADC_VAL_Msk       (_U_(0xFFF) << FUSES_HOT_ADC_VAL_Pos)
+#define FUSES_HOT_ADC_VAL_Msk       (0xFFFu << FUSES_HOT_ADC_VAL_Pos)
 #define FUSES_HOT_ADC_VAL(value)    (FUSES_HOT_ADC_VAL_Msk & ((value) << FUSES_HOT_ADC_VAL_Pos))
 
 #define FUSES_HOT_INT1V_VAL_ADDR    (NVMCTRL_TEMP_LOG + 4)
 #define FUSES_HOT_INT1V_VAL_Pos     0            /**< \brief (NVMCTRL_TEMP_LOG) 2's complement of the internal 1V reference drift at hot temperature (versus a 1.0 centered value) */
-#define FUSES_HOT_INT1V_VAL_Msk     (_U_(0xFF) << FUSES_HOT_INT1V_VAL_Pos)
+#define FUSES_HOT_INT1V_VAL_Msk     (0xFFu << FUSES_HOT_INT1V_VAL_Pos)
 #define FUSES_HOT_INT1V_VAL(value)  (FUSES_HOT_INT1V_VAL_Msk & ((value) << FUSES_HOT_INT1V_VAL_Pos))
 
 #define FUSES_HOT_TEMP_VAL_DEC_ADDR NVMCTRL_TEMP_LOG
 #define FUSES_HOT_TEMP_VAL_DEC_Pos  20           /**< \brief (NVMCTRL_TEMP_LOG) Decimal part of hot temperature */
-#define FUSES_HOT_TEMP_VAL_DEC_Msk  (_U_(0xF) << FUSES_HOT_TEMP_VAL_DEC_Pos)
+#define FUSES_HOT_TEMP_VAL_DEC_Msk  (0xFu << FUSES_HOT_TEMP_VAL_DEC_Pos)
 #define FUSES_HOT_TEMP_VAL_DEC(value) (FUSES_HOT_TEMP_VAL_DEC_Msk & ((value) << FUSES_HOT_TEMP_VAL_DEC_Pos))
 
 #define FUSES_HOT_TEMP_VAL_INT_ADDR NVMCTRL_TEMP_LOG
 #define FUSES_HOT_TEMP_VAL_INT_Pos  12           /**< \brief (NVMCTRL_TEMP_LOG) Integer part of hot temperature in oC */
-#define FUSES_HOT_TEMP_VAL_INT_Msk  (_U_(0xFF) << FUSES_HOT_TEMP_VAL_INT_Pos)
+#define FUSES_HOT_TEMP_VAL_INT_Msk  (0xFFu << FUSES_HOT_TEMP_VAL_INT_Pos)
 #define FUSES_HOT_TEMP_VAL_INT(value) (FUSES_HOT_TEMP_VAL_INT_Msk & ((value) << FUSES_HOT_TEMP_VAL_INT_Pos))
 
 #define FUSES_ROOM_ADC_VAL_ADDR     (NVMCTRL_TEMP_LOG + 4)
 #define FUSES_ROOM_ADC_VAL_Pos      8            /**< \brief (NVMCTRL_TEMP_LOG) 12-bit ADC conversion at room temperature */
-#define FUSES_ROOM_ADC_VAL_Msk      (_U_(0xFFF) << FUSES_ROOM_ADC_VAL_Pos)
+#define FUSES_ROOM_ADC_VAL_Msk      (0xFFFu << FUSES_ROOM_ADC_VAL_Pos)
 #define FUSES_ROOM_ADC_VAL(value)   (FUSES_ROOM_ADC_VAL_Msk & ((value) << FUSES_ROOM_ADC_VAL_Pos))
 
 #define FUSES_ROOM_INT1V_VAL_ADDR   NVMCTRL_TEMP_LOG
 #define FUSES_ROOM_INT1V_VAL_Pos    24           /**< \brief (NVMCTRL_TEMP_LOG) 2's complement of the internal 1V reference drift at room temperature (versus a 1.0 centered value) */
-#define FUSES_ROOM_INT1V_VAL_Msk    (_U_(0xFF) << FUSES_ROOM_INT1V_VAL_Pos)
+#define FUSES_ROOM_INT1V_VAL_Msk    (0xFFu << FUSES_ROOM_INT1V_VAL_Pos)
 #define FUSES_ROOM_INT1V_VAL(value) (FUSES_ROOM_INT1V_VAL_Msk & ((value) << FUSES_ROOM_INT1V_VAL_Pos))
 
 #define FUSES_ROOM_TEMP_VAL_DEC_ADDR NVMCTRL_TEMP_LOG
 #define FUSES_ROOM_TEMP_VAL_DEC_Pos 8            /**< \brief (NVMCTRL_TEMP_LOG) Decimal part of room temperature */
-#define FUSES_ROOM_TEMP_VAL_DEC_Msk (_U_(0xF) << FUSES_ROOM_TEMP_VAL_DEC_Pos)
+#define FUSES_ROOM_TEMP_VAL_DEC_Msk (0xFu << FUSES_ROOM_TEMP_VAL_DEC_Pos)
 #define FUSES_ROOM_TEMP_VAL_DEC(value) (FUSES_ROOM_TEMP_VAL_DEC_Msk & ((value) << FUSES_ROOM_TEMP_VAL_DEC_Pos))
 
 #define FUSES_ROOM_TEMP_VAL_INT_ADDR NVMCTRL_TEMP_LOG
 #define FUSES_ROOM_TEMP_VAL_INT_Pos 0            /**< \brief (NVMCTRL_TEMP_LOG) Integer part of room temperature in oC */
-#define FUSES_ROOM_TEMP_VAL_INT_Msk (_U_(0xFF) << FUSES_ROOM_TEMP_VAL_INT_Pos)
+#define FUSES_ROOM_TEMP_VAL_INT_Msk (0xFFu << FUSES_ROOM_TEMP_VAL_INT_Pos)
 #define FUSES_ROOM_TEMP_VAL_INT(value) (FUSES_ROOM_TEMP_VAL_INT_Msk & ((value) << FUSES_ROOM_TEMP_VAL_INT_Pos))
 
 /*************************** FUNCTIONS PROTOTYPE ******************************/

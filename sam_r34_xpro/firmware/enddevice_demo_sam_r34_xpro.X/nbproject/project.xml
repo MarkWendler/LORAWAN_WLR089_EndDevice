@@ -19,7 +19,11 @@
             </sourceRootList>
             <confList>
                 <confElem>
-                    <name>default</name>
+                    <name>WLR089U0</name>
+                    <type>2</type>
+                </confElem>
+                <confElem>
+                    <name>SAMR34</name>
                     <type>2</type>
                 </confElem>
             </confList>
