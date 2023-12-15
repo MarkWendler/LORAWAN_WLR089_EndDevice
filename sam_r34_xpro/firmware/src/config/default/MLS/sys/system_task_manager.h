@@ -61,6 +61,7 @@ typedef enum _SYSTEM_Task_t
   LORAWAN_TASK_ID = 1 << 2,
   PDS_TASK_ID     = 1 << 3,
   APP_TASK_ID     = 1 << 4,
+  APP_USER_IF_ID = 1 << 5,
 } SYSTEM_Task_t;
 
 /************************************************************************/
@@ -92,6 +93,7 @@ RADIO RADIO_TaskHandler()
 HAL - HAL_TaskHandler()
 LORAWAN - LORAWAN_TaskHandler()
 APP - APP_TaskHandler()
+ * APP_USER_IF_ID
  */
 void SYSTEM_PostTask(SYSTEM_Task_t task);
 

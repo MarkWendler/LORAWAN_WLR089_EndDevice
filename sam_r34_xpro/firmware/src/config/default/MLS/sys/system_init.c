@@ -46,6 +46,7 @@ void Stack_Init(void)
 {
     /* Post application task to initiate the execution from there */
     SYSTEM_PostTask(APP_TASK_ID);
+    SYSTEM_PostTask(APP_USER_IF_ID);
 }
 
 /* eof system_init.c */

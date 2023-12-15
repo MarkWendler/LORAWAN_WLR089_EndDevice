@@ -358,6 +358,7 @@
       <itemPath>../src/config/default/mls_app.h</itemPath>
       <itemPath>../../../source/enddevice_demo.h</itemPath>
       <itemPath>../../../source/temperature_sensor.h</itemPath>
+      <itemPath>../src/app_user_if.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -740,6 +741,7 @@
       <itemPath>../src/config/default/mls_app.c</itemPath>
       <itemPath>../../../source/enddevice_demo.c</itemPath>
       <itemPath>../../../source/temperature_sensor.c</itemPath>
+      <itemPath>../src/app_user_if.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

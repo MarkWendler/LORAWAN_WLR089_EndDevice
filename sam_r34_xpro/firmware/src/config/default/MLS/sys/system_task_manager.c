@@ -37,7 +37,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 /************************************************************************/
 /* Defines                                                              */
 /************************************************************************/
-#define SYSTEM_TASK_ID_COUNT 5u
+#define SYSTEM_TASK_ID_COUNT 6u
 
 /************************************************************************/
 /* Externals                                                            */
@@ -57,6 +57,9 @@ extern SYSTEM_TaskStatus_t PDS_TaskHandler(void);
 //! This function is called to process APP task. SHOULD be defined in APP.
 extern SYSTEM_TaskStatus_t APP_TaskHandler(void);
 
+//! This function is called to process APP task. SHOULD be defined in APP.
+extern SYSTEM_TaskStatus_t APP_UserIfTask(void);
+
 /************************************************************************/
 /*  Static variables                                                    */
 /************************************************************************/
@@ -67,6 +70,7 @@ static SYSTEM_TaskStatus_t (*taskHandlers[SYSTEM_TASK_ID_COUNT])(void) ={
     LORAWAN_TaskHandler,
     PDS_TaskHandler,
     APP_TaskHandler,
+    APP_UserIfTask,
 };
 
 static volatile uint16_t sysTaskFlag = 0u;
