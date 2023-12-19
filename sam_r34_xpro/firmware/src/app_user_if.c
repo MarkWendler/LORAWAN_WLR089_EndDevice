@@ -87,7 +87,7 @@ void APP_UserIfInit(void){
                 SW_TIMEOUT_RELATIVE,
                 APP_UserIf_PostTask,
                 NULL) != LORAWAN_SUCCESS) {
-                printf("Failed to restart periodic timer for APP_User_If\r\n");
+                printf("Failed to start periodic timer for APP_User_If\r\n");
         }
     }
 
@@ -115,6 +115,7 @@ SYSTEM_TaskStatus_t APP_UserIfTask(void)
 
         case USERIF_SERVICE_TASKS:
         {
+            SERCOM3_USART_Write("U", 1);//SERCOM3_USART_Write(0xAA, 1);
             
             if(SW0_STATE() == 0)
             {

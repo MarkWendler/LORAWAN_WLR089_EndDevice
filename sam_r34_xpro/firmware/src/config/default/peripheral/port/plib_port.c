@@ -81,8 +81,13 @@ void PORT_Initialize(void)
    PORT_REGS->GROUP[0].PORT_PINCFG[18] = 0x0;
    PORT_REGS->GROUP[0].PORT_PINCFG[19] = 0x0;
 
-   PORT_REGS->GROUP[0].PORT_PMUX[2] = 0x33;
-   PORT_REGS->GROUP[0].PORT_PMUX[8] = 0x22;
+   PORT_REGS->GROUP[0].PORT_PINCFG[22] = 0b0111; // PA22 SERCOM3/PAD[0] ( UART on EXT1 PIN9)
+   PORT_REGS->GROUP[0].PORT_PINCFG[23] = 0b0111; // PA23 SERCOM3/PAD[1] ( UART on EXT1 PIN15)
+   
+   PORT_REGS->GROUP[0].PORT_PMUX[2] = 0x33; //PA4,5 --> Function Group D --> SERCOM0
+   PORT_REGS->GROUP[0].PORT_PMUX[8] = 0x22; // PA16,17 --> Function Group B --> SERCOM1
+
+    PORT_REGS->GROUP[0].PORT_PMUX[11] = 0x22; // PA22,23 --> Function Group B --> SERCOM3
 
    /************************** GROUP 1 Initialization *************************/
 
