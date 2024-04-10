@@ -342,8 +342,12 @@ void DEMO_Init(void)
 #endif
 		printf("Last configured regional band %s\r\n", pcBandStrings[ucPrevChoice]);
 		printf("Press a key ([A-Z;0-9]) to change band\r\n");
-		printf("Continuing to %s in ", pcBandStrings[ucPrevChoice]);
-
+		printf("Continuing to %s in ", pcBandStrings[ucPrevChoice]);       
+        
+        if( SwTimerCreate(&ucRestoreTimer)!= LORAWAN_SUCCESS) {
+                printf("Failed to create SW timer for Auto restore\r\n");
+        }
+        
 		SwTimerStart(ucRestoreTimer,
 			MS_TO_US(DEMOAPP_RESTOREPERIODTIMER_MS),
 			SW_TIMEOUT_RELATIVE,

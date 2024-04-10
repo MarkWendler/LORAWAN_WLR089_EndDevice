@@ -244,6 +244,7 @@ extern "C" {
 /* To join with NS supporting LW1.0.3, LW1.0.2, LW1.0.1 */
 //#define APP_JOIN_NONCE_TYPE                     JOIN_NONCE_RANDOM
 
+#define TESTMODE_ENABLED //No limit of message sending. (Can violate regulation!)
 
 // -----------------------------------------------------------------------------
 

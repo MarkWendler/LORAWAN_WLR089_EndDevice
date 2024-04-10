@@ -355,6 +355,11 @@ StackRetStatus_t LORAWAN_Reset (IsmBand_t ismBand)
     LorawanLinkCheckConfigure (DISABLED); // disable the link check mechanism
     LorawanMcastInit();
 
+#ifdef TESTMODE_ENABLED
+    LORAWAN_SetAttr(TEST_MODE_ENABLE, true);
+    printf("TestMode Enabled!");
+#endif
+    
     return status;
 }
 
