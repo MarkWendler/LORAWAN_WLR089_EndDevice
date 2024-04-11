@@ -119,7 +119,7 @@ uint32_t _get_cycles_for_ms(const uint32_t ms)
 /**
  * \brief Delay loop to delay n number of cycles
  */
-void _delay_cycles(void *const hw, uint32_t cycles)
+void __attribute__((noinline)) _delay_cycles(void *const hw, uint32_t cycles)
 {
     /*lint -esym(718, __asm) */
 #ifndef _UNIT_TEST_
@@ -127,12 +127,11 @@ void _delay_cycles(void *const hw, uint32_t cycles)
     (void)cycles;
 #if defined __GNUC__
     /*lint -e{718} */
-    /*
     __asm(".syntax unified\n"
           "__delay:\n"
           "subs r1, r1, #1\n"
           "bhi __delay\n"
-          ".syntax divided");*/
+          ".syntax divided");
 #elif defined __CC_ARM
     /*lint -e{718} */
     __asm("__delay:\n"
