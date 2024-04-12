@@ -1,4 +1,4 @@
-# ATSAMR34_LORAWAN_H3 End device demo
+# WLR089-click_LORAWAN_H3 End device demo
 This repo containing a simplified demo from Microchip official LORAWAN stack repo.
 https://github.com/MicrochipTech/ATSAMR34_LORAWAN_H3
 
