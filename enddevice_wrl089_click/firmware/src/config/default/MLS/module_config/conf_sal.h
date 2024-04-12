@@ -45,7 +45,7 @@ extern "C" {
 #endif
 // DOM-IGNORE-END
 
-//#define CRYPTO_DEV_ENABLED
+//#define CRYPTO_DEV_ENABLED         //crypto IC használata a demo app-ban.
 
 #define SERIAL_NUM_AS_DEV_EUI       (0)
 
