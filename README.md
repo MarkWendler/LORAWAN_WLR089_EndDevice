@@ -4,15 +4,15 @@ https://github.com/MicrochipTech/ATSAMR34_LORAWAN_H3
 
 Harmony 3 configurator does not work with this project. The original project is based on Harmony 3 framework, then modified manually to add sercom3 and make it compatible with new compiler and WLR089.
 
-Target board WLR089 Xplained
-![Alt text](resources/WLR089U0Xpro.png)
+Target board WLR089-click from ChipCAD Ltd. (https://www.chipcad.hu/)
+![Alt text](resources/wlr089_click_main.png)
 
 1. Download and install [MPLAB® X IDE v6.15 tested](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide)
-2. Download and install [MPLAB XC32 Compiler v4.21 tested](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers)
+2. Download and install [MPLAB XC32 Compiler v4.35 tested](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers)
 3. Clone this repo
 4. Connect HW to EDBG-USB (on board programmer/debugger)
 5. Build and Program the device from MPLAB X IDE under **Production -> Make and Program Device**
-6. LED1 should start to blink with 1 Hz after programming is succesful
+6. LED2 should start to blink with 1 Hz after programming is succesful
 
 ![Alt text](resources/WLR089_Xplained_run.gif)
 
