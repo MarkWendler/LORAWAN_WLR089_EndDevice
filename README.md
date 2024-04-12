@@ -17,6 +17,7 @@ Target board WLR089-click from ChipCAD Ltd. (https://www.chipcad.hu/)
    1.  115200-8-N-1 
 8. Observe the output on the terminal
 
+
 ```
 Last reset cause: External Reset
 
