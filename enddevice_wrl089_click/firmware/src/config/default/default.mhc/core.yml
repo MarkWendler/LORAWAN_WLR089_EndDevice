@@ -833,7 +833,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: LED_GREEN}
+        attributes: {value: LED_BLUE}
   - type: String
     attributes: {id: PIN_39_FUNCTION_TYPE}
     children:
@@ -882,7 +882,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: LED_AMBER}
+        attributes: {value: LED_GREEN}
   - type: String
     attributes: {id: PIN_40_FUNCTION_TYPE}
     children:

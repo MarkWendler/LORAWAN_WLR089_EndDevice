@@ -74,10 +74,13 @@ extern ActivationType_t mlsAppCertJoinType;
 #define BOARD_NAME          "USER_BOARD"
 #endif
 
-#define LED_AMBER_ON        LED_AMBER_Clear();
-#define LED_AMBER_OFF       LED_AMBER_Set();
-#define LED_GREEN_ON        LED_GREEN_Clear();
-#define LED_GREEN_OFF       LED_GREEN_Set();
+#define LED_GREEN_ON        LED_GREEN_Set();
+#define LED_GREEN_OFF       LED_GREEN_Clear();
+#define LED_BLUE_ON        LED_BLUE_Set();
+#define LED_BLUE_OFF       LED_BLUE_Clear();
+#define LED_RED_ON        LED_RED_Set();
+#define LED_RED_OFF       LED_RED_Clear();
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -298,8 +301,9 @@ void DEMO_RunTask(AppTaskIds_t xTask, AppTaskState_t xState)
 
 void DEMO_Init(void)
 {
-	LED_AMBER_OFF;
 	LED_GREEN_OFF;
+	LED_BLUE_OFF;
+    LED_RED_OFF;
 
 #ifdef CONF_PMM_ENABLE
 	MlsAppSleepCallbackNotifySet(DEMO_WakeupNotification);
@@ -731,7 +735,7 @@ void DEMO_ProcessRestorePrompt(void)
 
 		if (ulJoinStatus & DEMOAPP_LORAWANJOINED_BITMASK) {
 			bIsJoined = true;
-			LED_GREEN_ON;
+			LED_BLUE_ON;
 			printf("Device has joined already\r\n");
 		} else {
 			bIsJoined = false;
@@ -901,7 +905,8 @@ void DEMO_SendMessage(void)
 
 	switch (xStat) {
 	case LORAWAN_SUCCESS:
-		LED_AMBER_ON;
+        LED_RED_ON;
+		//LED_GREEN_ON;
 		break;
 
 	case LORAWAN_NWK_NOT_JOINED:
@@ -923,7 +928,8 @@ void DEMO_MessageNotification(void *appHnd, appCbParams_t *data)
 
 	LORAWAN_GetAttr(EDCLASS, NULL, &xClass);
 
-	LED_AMBER_OFF;
+    LED_RED_OFF;
+	//LED_GREEN_OFF;
 
 	switch (data->evt) {
 	default:
@@ -959,7 +965,7 @@ void DEMO_MessageNotification(void *appHnd, appCbParams_t *data)
 void DEMO_Join(ActivationType_t xType)
 {
 	StackRetStatus_t xStat = MlsAppJoinReq(xType);
-	LED_GREEN_OFF;
+	LED_BLUE_OFF;
 	DEMO_PrintStatus(xStat);
 }
 //------------------------------------------------------------------------------
@@ -968,7 +974,7 @@ void DEMO_JoinNotification(StackRetStatus_t xStatus)
 {
 	DEMO_PrintStatus(xStatus);
 	if (xStatus != LORAWAN_SUCCESS) {
-		LED_GREEN_OFF;
+		LED_BLUE_OFF;
 #if (CERT_APP == 1)
 		if (mlsAppIsCertModeEnabled) {
 			if (mlsAppCertJoinType == LORAWAN_OTAA) {
@@ -977,7 +983,7 @@ void DEMO_JoinNotification(StackRetStatus_t xStatus)
 		}
 #endif
 	} else {
-		LED_GREEN_ON;
+		LED_BLUE_ON;
 		DEMO_PrintConfig();
 
 #if (CERT_APP == 1)

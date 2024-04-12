@@ -10,27 +10,32 @@
 #include "config/default/MLS/services/sw_timer/sw_timer.h"
 
 
-#define LED0_PIN      PORT_PIN_PA19
 #define LED1_PIN      PORT_PIN_PA18
-
-#define LED0_ON()     PORT_PinSet(LED0_PIN)
-#define LED0_OFF()    PORT_PinClear(LED0_PIN)
-#define LED0_TOGGLE() PORT_PinToggle(LED0_PIN)
+#define LED2_PIN      PORT_PIN_PA19
+#define LED3_PIN      PORT_PIN_PA27
 
 #define LED1_ON()     PORT_PinSet(LED1_PIN)
 #define LED1_OFF()    PORT_PinClear(LED1_PIN)
 #define LED1_TOGGLE() PORT_PinToggle(LED1_PIN)
 
-#define SW0_PIN PORT_PIN_PA28
+#define LED2_ON()     PORT_PinSet(LED2_PIN)
+#define LED2_OFF()    PORT_PinClear(LED2_PIN)
+#define LED2_TOGGLE() PORT_PinToggle(LED2_PIN)
 
-#define SW0_STATE() PORT_PinRead(SW0_PIN)
+#define LED3_ON()     PORT_PinSet(LED3_PIN)
+#define LED3_OFF()    PORT_PinClear(LED3_PIN)
+#define LED3_TOGGLE() PORT_PinToggle(LED3_PIN)
+
+#define K1_PIN PORT_PIN_PA28
+
+#define K1_STATE() PORT_PinRead(K1_PIN)
 
 typedef enum
 {
     /* Application's state machine's initial state. */
     USERIF_STATE_INIT=0,
     USERIF_SERVICE_TASKS,
-    USERIF_STATE_SW0_TRIGGERED,
+    USERIF_STATE_K1_TRIGGERED,
 
 } USERIF_STATES;
 
@@ -67,17 +72,19 @@ void APP_UserIf_PostTask(void){
 
  */
 void APP_UserIfInit(void){
-    // Initialize LED0 and LED1 PA19 and PA18
-    PORT_PinGPIOConfig(LED0_PIN);
+    // Initialize LED1 and LED2 PA18 and PA19 
     PORT_PinGPIOConfig(LED1_PIN);
-    PORT_PinOutputEnable(LED0_PIN);
+    PORT_PinGPIOConfig(LED2_PIN);
+    PORT_PinGPIOConfig(LED3_PIN);
     PORT_PinOutputEnable(LED1_PIN);
+    PORT_PinOutputEnable(LED2_PIN);
+    PORT_PinOutputEnable(LED3_PIN);
 
-    // Initialize SW0 PA28
-    PORT_PinGPIOConfig(SW0_PIN);
-    PORT_PinInputEnable(SW0_PIN);
-    PORT_PinWrite(SW0_PIN, true);//Enable pull-up
-    //SW0 - input enable & pull enable
+    // Initialize K1 PA28
+    PORT_PinGPIOConfig(K1_PIN);
+    PORT_PinInputEnable(K1_PIN);
+    PORT_PinWrite(K1_PIN, true);//Enable pull-up
+    //K1 - input enable & pull enable
 	PORT_REGS->GROUP[0].PORT_PINCFG[28]= 0b0111;
     
     EIC_CallbackRegister(EIC_PIN_8, (EIC_CALLBACK)PIN28_ExternalIntCallback, (uintptr_t)NULL);
@@ -123,22 +130,22 @@ SYSTEM_TaskStatus_t APP_UserIfTask(void)
         {
             SERCOM3_USART_Write("U", 1);//SERCOM3_USART_Write(0xAA, 1);
             
-            if(SW0_STATE() == 0)
+            if(K1_STATE() == 0)
             {
-                LED0_ON();
+                LED1_ON();
                 printf("Button ON\r\n");
             }
             else
             {
-                LED0_OFF();
+                LED1_OFF();
             }
-            LED1_TOGGLE();
+            LED2_TOGGLE();
             break;
         }
         
-        case USERIF_STATE_SW0_TRIGGERED:
+        case USERIF_STATE_K1_TRIGGERED:
             buttonPressHandle();
-            userIfState = USERIF_SERVICE_TASKS; //return to prev state stored in the SW0 interrupt
+            userIfState = USERIF_SERVICE_TASKS; //return to prev state stored in the K1 interrupt
             break;
 
         default:
@@ -155,7 +162,8 @@ SYSTEM_TaskStatus_t APP_UserIfTask(void)
 
 
 int buttonPressHandle(void){
-    printf("Button SW0 PA28 pressed. Interrupt callback executing...\r\n");
+    LED3_ON();
+    printf("Button K1 PA28 pressed. Interrupt callback executing...\r\n");
     LorawanStatus_t lwstat;
     StackRetStatus_t stackReturnStatus;
     static LorawanSendReq_t lorawanSendReq; //Must be available outside of function
@@ -196,14 +204,14 @@ int buttonPressHandle(void){
 
         printf("DataHex: ");
         printArrayU8HEX(lorawanSendReq.buffer, lorawanSendReq.bufferLength);
-        
+   LED3_OFF();     
     }
     return 0;
 }
 
 static void PIN28_ExternalIntCallback(void){
     userIfStatePrevious = userIfState;
-    userIfState = USERIF_STATE_SW0_TRIGGERED;
+    userIfState = USERIF_STATE_K1_TRIGGERED;
 }
 
 void printArrayU8HEX(uint8_t *array, uint8_t length)
