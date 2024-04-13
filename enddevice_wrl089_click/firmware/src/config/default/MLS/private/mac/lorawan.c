@@ -235,6 +235,7 @@ void LORAWAN_Init(AppDataCb_t appdata, JoinResponseCb_t joindata) // this functi
 
 StackRetStatus_t LORAWAN_Reset (IsmBand_t ismBand)
 {
+    static bool testModeEnable = true;
     uint8_t paBoost;
     IsmBand_t prevBand = 0xff;
 
@@ -356,7 +357,7 @@ StackRetStatus_t LORAWAN_Reset (IsmBand_t ismBand)
     LorawanMcastInit();
 
 #ifdef TESTMODE_ENABLED
-    LORAWAN_SetAttr(TEST_MODE_ENABLE, true);
+    LORAWAN_SetAttr(TEST_MODE_ENABLE, &testModeEnable);
     printf("TestMode Enabled!");
 #endif
     
