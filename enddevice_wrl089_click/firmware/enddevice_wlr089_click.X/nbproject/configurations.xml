@@ -338,9 +338,6 @@
       <itemPath>../src/app.h</itemPath>
       <itemPath>../src/config/default/mls_app.h</itemPath>
       <itemPath>../src/app_user_if.h</itemPath>
-      <itemPath>../src/adeunis.h</itemPath>
-      <itemPath>../src/mockgpspayload.h</itemPath>
-      <itemPath>../src/adeunis_frame.h</itemPath>
       <itemPath>../src/enddevice_demo.h</itemPath>
       <itemPath>../src/temperature_sensor.h</itemPath>
     </logicalFolder>
@@ -764,8 +761,6 @@
       <itemPath>../src/app.c</itemPath>
       <itemPath>../src/config/default/mls_app.c</itemPath>
       <itemPath>../src/app_user_if.c</itemPath>
-      <itemPath>../src/adeunis.c</itemPath>
-      <itemPath>../src/mockgpspayload.c</itemPath>
       <itemPath>../src/temperature_sensor.c</itemPath>
       <itemPath>../src/enddevice_demo.c</itemPath>
     </logicalFolder>
