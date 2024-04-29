@@ -193,6 +193,13 @@ extern "C" {
 #define DEMO_APP_ACTIVATION_TYPE            LORAWAN_OTAA
 //#define DEMO_APP_ACTIVATION_TYPE            LORAWAN_ABP
 
+ /*
+ * Select the ISM Band
+ */
+    
+#define APP_ISMBAND       ISM_EU868
+   
+
 // -----------------------------------------------------------------------------
 
 /*

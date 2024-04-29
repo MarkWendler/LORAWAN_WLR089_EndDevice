@@ -163,7 +163,6 @@ void DEMO_PrintStatus(StackRetStatus_t xStat);
 
 #if (ENABLE_PDS == 1)
 void DEMO_ProcessRestorePrompt(void);
-void DEMO_RestoreTimerCallback(void);
 #endif
 
 void DEMO_LedTimerCallback(void);
