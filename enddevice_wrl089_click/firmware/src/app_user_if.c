@@ -8,7 +8,7 @@
 *******   Section: Included Files   *********/
 #include "config/default/peripheral/port/plib_port.h"
 #include "config/default/MLS/services/sw_timer/sw_timer.h"
-
+#include "mockgpspayload.h"   
 
 #define LED1_PIN      PORT_PIN_PA18
 #define LED2_PIN      PORT_PIN_PA19
@@ -169,7 +169,8 @@ int buttonPressHandle(void){
     static LorawanSendReq_t lorawanSendReq; //Must be available outside of function
     uint32_t fcntup;
     uint8_t datarate;
-    char buf[255];
+    uint8_t buf[255];
+    int8_t length;
 
     LORAWAN_GetAttr(LORAWAN_STATUS, NULL, &lwstat);
 
@@ -179,9 +180,15 @@ int buttonPressHandle(void){
     }
     else{ //LORAWAN connected so send mock GPS signal
         printf("Sending message...\r\n");
-        sprintf(buf,"01234");
+        
+        // get mock gps coodrdinates in aedunis format
+        length = getMockGpsPayload(buf);
+        if(length<2){ //invalid length of payload
+            printf("ERROR: failed to generate payload. \r\n");
+            return -1;
+        }
+        lorawanSendReq.bufferLength = length;
         lorawanSendReq.buffer = buf;
-        lorawanSendReq.bufferLength = 5;
         lorawanSendReq.confirmed = LORAWAN_UNCNF;
         lorawanSendReq.port = 2;
         
